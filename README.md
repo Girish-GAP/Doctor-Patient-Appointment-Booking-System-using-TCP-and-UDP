@@ -46,8 +46,8 @@ In this project, we demonstrate the use of both TCP and UDP in a doctor-patient 
 
 1. **DoctorTCPServer.java:** A TCP server that listens for appointment details from the patient.
 2. **PatientTCPClient.java:** A TCP client that sends appointment details to the doctor.
-3. **DoctorUDPServer.java:** A UDP server that sends appointment confirmation or rejection.
-4. **PatientUDPClient.java:** A UDP client that listens for the doctor's confirmation.
+3. **DoctorUDPClient.java:** A UDP client that sends appointment confirmation or rejection (this runs internally from the doctor's server).
+4. **PatientUDPServer.java:** A UDP server that listens for the doctor's decision (receiving confirmation or denial).
 
 ## How the Project Works
 
@@ -72,13 +72,11 @@ In this project, we demonstrate the use of both TCP and UDP in a doctor-patient 
 1. **Compile the Java Files:**
    Open a terminal or command prompt in the project directory and compile the server and client files:
 
-   ```bash
-   javac DoctorTCPServer.java PatientTCPClient.java DoctorUDPServer.java PatientUDPClient.java
-   ```
+   javac DoctorTCPServer.java PatientTCPClient.java DoctorUDPClient.java PatientUDPServer.java
 
-## Run the Doctor’s TCP Server
+### Run the Doctor’s TCP Server
 
-In one terminal window, run the doctor's TCP server which listens for appointment details from the patient:
+In one terminal window, run the doctor's TCP server, which listens for appointment details from the patient:
 
     java DoctorTCPServer
 
@@ -86,17 +84,7 @@ You should see the following output:
 
     Doctor TCP Server started on port 5001
 
-## Run the Doctor’s UDP Server
-
-In another terminal window, run the doctor’s UDP server that sends confirmations or rejections:
-
-    java DoctorUDPServer
-
-You should see the following output:
-
-    Doctor UDP Server started on port 5002
-
-## Run the Patient’s TCP Client
+### Run the Patient’s TCP Client
 
 Open another terminal window and run the patient's TCP client to send appointment details to the doctor:
 
@@ -108,11 +96,15 @@ The patient will be prompted to enter their name, the appointment date, and time
     Enter the appointment date (e.g., tomorrow): tomorrow
     Enter the appointment time (e.g., 10:00 AM): 10:00 AM
 
-## Run the Patient’s UDP Client
+### Doctor's Internal UDP Communication
 
-Open a final terminal window and run the patient's UDP client to listen for the doctor’s confirmation or denial:
+The doctor’s **UDP client** is invoked internally in the **DoctorTCPServer** class to send appointment confirmations or denials. You do not need to manually start the UDP server. The communication between the doctor and patient is handled automatically.
 
-    java PatientUDPClient
+### Run the Patient’s UDP Server
+
+Open a final terminal window and run the patient's UDP server to listen for the doctor’s confirmation or denial:
+
+    java PatientUDPServer
 
 The patient will receive a confirmation or denial message from the doctor’s UDP server.
 
@@ -136,14 +128,13 @@ The patient will receive a confirmation or denial message from the doctor’s UD
     Doctor TCP Server started on port 5001
     Appointment request received: Patient John wants an appointment on tomorrow at 10:00 AM
 
-### DoctorUDPServer:
+### DoctorUDPClient (Internal):
 
-    Doctor UDP Server started on port 5002
-    Sent confirmation to patient: Appointment confirmed for tomorrow at 10:00 AM
+    Sent decision to patient via UDP: Appointment confirmed for tomorrow at 10:00 AM
 
-### PatientUDPClient:
+### PatientUDPServer:
 
-    Patient UDP Client started on port 5003
+    Patient UDP Server started on port 5002
     Received confirmation from doctor: Appointment confirmed for tomorrow at 10:00 AM
 
 ## Conclusion
