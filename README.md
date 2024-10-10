@@ -75,3 +75,77 @@ In this project, we demonstrate the use of both TCP and UDP in a doctor-patient 
    ```bash
    javac DoctorTCPServer.java PatientTCPClient.java DoctorUDPServer.java PatientUDPClient.java
    ```
+
+## Run the Doctor’s TCP Server
+
+In one terminal window, run the doctor's TCP server which listens for appointment details from the patient:
+
+    java DoctorTCPServer
+
+You should see the following output:
+
+    Doctor TCP Server started on port 5001
+
+## Run the Doctor’s UDP Server
+
+In another terminal window, run the doctor’s UDP server that sends confirmations or rejections:
+
+    java DoctorUDPServer
+
+You should see the following output:
+
+    Doctor UDP Server started on port 5002
+
+## Run the Patient’s TCP Client
+
+Open another terminal window and run the patient's TCP client to send appointment details to the doctor:
+
+    java PatientTCPClient
+
+The patient will be prompted to enter their name, the appointment date, and time. After entering these, the details will be sent to the doctor. Example input:
+
+    Enter your name: John
+    Enter the appointment date (e.g., tomorrow): tomorrow
+    Enter the appointment time (e.g., 10:00 AM): 10:00 AM
+
+## Run the Patient’s UDP Client
+
+Open a final terminal window and run the patient's UDP client to listen for the doctor’s confirmation or denial:
+
+    java PatientUDPClient
+
+The patient will receive a confirmation or denial message from the doctor’s UDP server.
+
+## Example Usage
+
+### Scenario:
+
+- **Patient**: John wants to book an appointment for tomorrow at 10:00 AM.
+- **Doctor**: The doctor either accepts or denies the appointment based on availability.
+
+### PatientTCPClient:
+
+    Connected to Doctor TCP Server
+    Enter your name: John
+    Enter the appointment date (e.g., tomorrow): tomorrow
+    Enter the appointment time (e.g., 10:00 AM): 10:00 AM
+    Sent appointment details to Doctor: Patient John wants an appointment on tomorrow at 10:00 AM
+
+### DoctorTCPServer:
+
+    Doctor TCP Server started on port 5001
+    Appointment request received: Patient John wants an appointment on tomorrow at 10:00 AM
+
+### DoctorUDPServer:
+
+    Doctor UDP Server started on port 5002
+    Sent confirmation to patient: Appointment confirmed for tomorrow at 10:00 AM
+
+### PatientUDPClient:
+
+    Patient UDP Client started on port 5003
+    Received confirmation from doctor: Appointment confirmed for tomorrow at 10:00 AM
+
+## Conclusion
+
+This project demonstrates how both TCP and UDP protocols can be used in a client-server system. TCP ensures reliable transmission of appointment details, while UDP is used for quick confirmation or rejection responses. The combination of these two protocols allows us to build robust real-time communication systems.
