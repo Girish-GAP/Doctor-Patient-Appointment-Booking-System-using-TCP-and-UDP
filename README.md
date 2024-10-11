@@ -83,6 +83,8 @@ PatientUDPServer (Receives Decision)
 
 ### Steps to run the project:
 
+[Click to watch the video](/artifact_demo.mp4)
+
 1. **Compile the Java Files:**
    Open a terminal or command prompt in the project directory and compile the server and client files:
 
