@@ -39,19 +39,19 @@ This project simulates a doctor-patient appointment booking system where the pat
 
 In this project, we demonstrate the use of both TCP and UDP in a doctor-patient system.
 
-PatientTCPClient (Sends Appointment Details)  
- |  
- | TCP (Port 5001)  
- v  
-DoctorTCPServer (Receives Appointment Details)  
- |  
- | Decision (accept/deny)  
- v  
-DoctorUDPClient (Sends Decision via UDP)  
- |  
- | UDP (Port 5002)  
- v  
-PatientUDPServer (Receives Decision)
+    PatientTCPClient (Sends Appointment Details)
+            |
+            | TCP (Port 5001)
+            v
+    DoctorTCPServer (Receives Appointment Details)
+            |
+            | Decision (accept/deny)
+            v
+    DoctorUDPClient (Sends Decision via UDP)
+            |
+            | UDP (Port 5002)
+            v
+    PatientUDPServer (Receives Decision)
 
 - **TCP:** The patient uses TCP to send appointment details (like name, date, and time) to the doctor.
 - **UDP:** The doctor uses UDP to respond with either an appointment confirmation or a denial.
@@ -83,7 +83,7 @@ PatientUDPServer (Receives Decision)
 
 ### Steps to run the project:
 
-[Watch the video](path_to_your_video.mp4)
+[Watch the video](./demo_artefact.mp4)
 
 1. **Compile the Java Files:**
    Open a terminal or command prompt in the project directory and compile the server and client files:
