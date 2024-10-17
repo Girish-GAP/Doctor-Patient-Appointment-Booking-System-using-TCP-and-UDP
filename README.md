@@ -90,6 +90,10 @@ In this project, we demonstrate the use of both TCP and UDP in a doctor-patient 
 
    javac DoctorTCPServer.java PatientTCPClient.java DoctorUDPClient.java PatientUDPServer.java
 
+   Or You can compiler all the files at once with the commande :
+
+   javac \*.java
+
 ### Run the Doctor’s TCP Server
 
 In one terminal window, run the doctor's TCP server, which listens for appointment details from the patient:
